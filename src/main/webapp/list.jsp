@@ -30,12 +30,13 @@
     <table class="table table-hover table-striped">
         <thead class="table-dark">
         <tr>
-            <th>아이디</th>
-            <th>이름</th>
-            <th>성별</th>
-            <th>주소</th>
-            <th>전화번호</th>
-            <th>학과</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Major</th>
+            <th>Rc</th>
+            <th>Hometown</th>
+            <th>Function</th>
         </tr>
         </thead>
         <tbody>
@@ -58,7 +59,6 @@
         </tbody>
     </table>
     <br/>
-    <a href="write.jsp">Add New Post</a>
     <jsp:include page = "bottom.jsp"/>
 <%--</body>--%>
 <%--</html>--%>
