@@ -23,7 +23,7 @@
     %>
 </body>
 <script>
-    <%=msg%>
+    alert(<%=msg%>)
     location.href = "list.jsp" // list 페이지로 돌아감
 </script>
 </html>
