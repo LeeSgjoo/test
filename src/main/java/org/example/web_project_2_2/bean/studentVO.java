@@ -5,7 +5,7 @@ import org.example.web_project_2_2.common.JDBCUtil;
 import java.sql.Connection;
 
 public class studentVO {
-    private String id;
+    private int id;
     private String name;
     private int age;
     private String major;
@@ -14,8 +14,7 @@ public class studentVO {
 
     public studentVO(){}
 
-    public studentVO(String id, String name, int age, String major, String rc, String hometown) {
-        this.id = id;
+    public studentVO(String name, int age, String major, String rc, String hometown) {
         this.name = name;
         this.age = age;
         this.major = major;
@@ -23,11 +22,11 @@ public class studentVO {
         this.hometown = hometown;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getName() {
