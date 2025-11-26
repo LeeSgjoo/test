@@ -7,15 +7,18 @@
 <%request.setCharacterEncoding("UTF-8");%>
 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>wirte.jsp</title>
-    <link href="<%= request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<%--<!DOCTYPE html>--%>
+<%--<html>--%>
+<%--<head>--%>
+<%--    <title>wirte.jsp</title>--%>
+<%--    <link href="<%= request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">--%>
+<%--</head>--%>
+<%--<body>--%>
     <jsp:include page="top.jsp"/>
-    <h1>자유게시판</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3">학생 목록</h1>
+        <a href="write.jsp" class="btn btn-primary">학생 정보 추가</a>
+    </div>
     <%
         studentDAO studentDAO = new studentDAO();
         List<studentVO> list = studentDAO.getStudentList();
@@ -56,5 +59,5 @@
     <br/>
     <a href="write.jsp">Add New Post</a>
     <jsp:include page = "bottom.jsp"/>
-</body>
-</html>
+<%--</body>--%>
+<%--</html>--%>
