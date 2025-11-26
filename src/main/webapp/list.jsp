@@ -27,34 +27,35 @@
         request.setAttribute("list", list);
     %>
 
-    <table id="list" width="90%">
+    <table class="table table-hover table-striped">
+        <thead class="table-dark">
         <tr>
-            <th>Id</th>
-            <th>name</th>
-            <th>age</th>
-            <th>major</th>
-            <th>rc</th>
-            <th>hometown</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>성별</th>
+            <th>주소</th>
+            <th>전화번호</th>
+            <th>학과</th>
         </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${list}" var="u">
+                <tr>
+                    <td>${u.getId()}</td>  <!-- studentVO의 id 출력 -->
+                    <td>${u.getName()}</td>
+                    <td>${u.getAge()}</td>
+                    <td>${u.getMajor()}</td>
+                    <td>${u.getRc()}</td>
+                    <td>${u.getHometown()}</td>
 
-        <c:forEach items="${list}" var="u">
-            <tr>
-                <td>${u.getId()}</td>  <!-- studentVO의 id 출력 -->
-                <td>${u.getName()}</td>
-                <td>${u.getAge()}</td>
-                <td>${u.getMajor()}</td>
-                <td>${u.getRc()}</td>
-                <td>${u.getHometown()}</td>
-
-                <!-- 수정 링크: 게시글의 Seq를 파라미터로 넘겨 edit.jsp로 이동 -->
-                <td><a href="edit.jsp?id=${u.getId()}">Edit</a></td>
+                    <td><a href="edit.jsp?id=${u.getId()}">Edit</a></td>
 
 
-                <td><a href="javascript:delete_ok('${u.getId()}')">Delete</a></td>
-            </tr>
-        </c:forEach>
+                    <td><a href="javascript:delete_ok('${u.getId()}')">Delete</a></td>
+                </tr>
+
+            </c:forEach>
+        </tbody>
     </table>
     <br/>
     <a href="write.jsp">Add New Post</a>
