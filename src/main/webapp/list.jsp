@@ -14,7 +14,7 @@
     <link href="<%= request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <jsp:include page="header.jsp"/>
+    <jsp:include page="top.jsp"/>
     <h1>자유게시판</h1>
     <%
         studentDAO studentDAO = new studentDAO();
@@ -55,6 +55,6 @@
     </table>
     <br/>
     <a href="write.jsp">Add New Post</a>
-    <jsp:include page = "footer.jsp"/>
+    <jsp:include page = "bottom.jsp"/>
 </body>
 </html>
