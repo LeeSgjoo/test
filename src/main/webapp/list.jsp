@@ -37,8 +37,8 @@
 
         <c:forEach items="${list}" var="u">
             <tr>
-                <td>${u.}</td>  <!-- studentVO의 id 출력 -->
-                <td>${u.}</td>
+                <td>${u.getId}</td>  <!-- studentVO의 id 출력 -->
+                <td>${u.getName()}</td>
                 <td>${u.getAge()}</td>
                 <td>${u.getMajor()}</td>
                 <td>${u.getRc()}</td>
