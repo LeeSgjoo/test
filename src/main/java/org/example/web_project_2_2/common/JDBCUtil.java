@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 public class JDBCUtil {
     private static Connection conn = null;
-    private static Connection getConnection(){
+    public static Connection getConnection(){
         try{
             if(conn == null || conn.isClosed()){
                 Class.forName("org.mariadb.jdbc.Driver"); // 마리아디비의 드라이버를 작성
