@@ -55,6 +55,6 @@
     </table>
     <br/>
     <a href="write.jsp">Add New Post</a>
-
+    <jsp:include page = "bottom.jsp"/>
 </body>
 </html>

@@ -48,3 +48,6 @@
 
 <!-- 본문 내용이 들어갈 컨테이너 시작 -->
 <div class="container">
+</div>
+</body>
+</html>
