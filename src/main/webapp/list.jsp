@@ -52,7 +52,8 @@
                     <td><a href="edit.jsp?id=${u.getId()}">Edit</a></td>
 
 
-                    <td><a href="javascript:delete_ok('${u.getId()}')">Delete</a></td>
+                    <td><a href="delete_ok.jsp?id=${u.getId()}"
+                           onclick="return confirm('정말로 ID ${u.getId()} 학생 정보를 삭제하시겠습니까?');">Delete</a></td>
                 </tr>
 
             </c:forEach>
