@@ -37,7 +37,11 @@
                 </tr>
                 <tr>
                     <td><a href = "list.jsp">View All Records</a></td>
-                    <td><input type="submit" value = "Add post"/> </td>
+                    <td>
+                        <input type="submit"
+                               value = "Add post"
+                               onclick="return confirm('정말로 학생 정보를 추가하시겠습니까?');"/>
+                    </td>
                 </tr>
             </table>
         </form>
