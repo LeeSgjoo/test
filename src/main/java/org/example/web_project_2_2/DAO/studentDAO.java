@@ -187,7 +187,7 @@ public class studentDAO {
 //                resultStudent.setHometown("부산"); // 생성자에 없는 필드도 설정 가능하도록 가정
 //
 //                if (dao.updateStudent(resultStudent) == 1) {
-//                    System.out.println("✅ [UPDATE] ID " + resultStudent.getId() + " 학생 수정 성공!");
+//                    System.out.println(" [UPDATE] ID " + resultStudent.getId() + " 학생 수정 성공!");
 //                    // 수정 후 다시 조회하여 확인
 //                    studentVO updatedStudent = dao.getStudent(resultStudent);
 //                    System.out.println("   -> 수정된 내용: " + updatedStudent.getName() + ", " + updatedStudent.getMajor());
