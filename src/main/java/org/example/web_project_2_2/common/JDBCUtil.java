@@ -18,11 +18,11 @@ public class JDBCUtil {
         return conn;
     }
 
-    public static void main(String[] args) {
-        System.out.println("1");
-        Connection conn = JDBCUtil.getConnection(); // static은 객체없이 클래스명으로 바로 쓸 수 있었지
-        if(conn != null){
-            System.out.println("DB연결 성공!!");
-        }
-    }
+//    public static void main(String[] args) {
+//        System.out.println("1");
+//        Connection conn = JDBCUtil.getConnection(); // static은 객체없이 클래스명으로 바로 쓸 수 있었지
+//        if(conn != null){
+//            System.out.println("DB연결 성공!!");
+//        }
+//    }
 }

@@ -103,7 +103,7 @@ public class studentDAO {
         try {
             conn = JDBCUtil.getConnection();
             stmt = conn.prepareStatement(STUDENT_GET);
-            stmt.setInt(1, VO.getId()); // 조회할 id 지정
+            stmt.setInt(1, VO.getId()); // *** 조회할 id 지정 ***
             rs = stmt.executeQuery();
 
             if (rs.next()) {
