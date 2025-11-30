@@ -49,6 +49,8 @@
                     <td>${u.getRc()}</td>
                     <td>${u.getHometown()}</td>
 
+                    <td><a href="view.jsp?id=${u.getId()}">View</a></td>
+
                     <td><a href="edit.jsp?id=${u.getId()}">Edit</a></td>
 
 
