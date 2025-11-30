@@ -44,23 +44,24 @@
     <table>
         <tr>
             <td>Name: </td>
-            <td><input type = "text" name = "name" placeholder=<%=student.getName()%>/></td> //placeholder로 원래 데이터를 입력창에 깔아줬다
+            <td><input type = "text" name = "name" placeholder=<%=student.getName()%> /></td>
+            <%---placeholder로 원래 데이터를 입력창에 깔아줬다 ---%>
         </tr>
         <tr>
             <td>Age: </td>
-            <td><input type = "number" name = "age"placeholder=<%=student.getAge()%>/></td>
+            <td><input type = "number" name = "age"placeholder=<%=student.getAge()%> /></td>
         </tr>
         <tr>
             <td>Major: </td>
-            <td><input type = "text" name = "major" placeholder=<%=student.getMajor()%>/></td>
+            <td><input type = "text" name = "major" placeholder=<%=student.getMajor()%> /></td>
         </tr>
         <tr>
             <td>RC: </td>
-            <td><input type = "text" name = "rc" placeholder=<%=student.getRc()%>/></td>
+            <td><input type = "text" name = "rc" placeholder=<%=student.getRc()%> /></td>
         </tr>
         <tr>
             <td>Hometown: </td>
-            <td><input type = "text" name = "hometown placeholder=<%=student.getHometown()%>"/></td>
+            <td><input type = "text" name = "hometown placeholder=<%=student.getHometown()%>" /></td>
         </tr>
         <tr>
             <td><a href = "list.jsp">View All Records</a></td>
