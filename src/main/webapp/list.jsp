@@ -28,6 +28,7 @@
     %>
 
     <table class="table table-hover table-striped">
+        <a href = fileform.jsp>fileUpload</a>
         <thead class="table-dark">
         <tr>
             <th>ID</th>
