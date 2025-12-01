@@ -16,8 +16,9 @@
 <%--<body>--%>
     <jsp:include page="top.jsp"/>
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h3">학생 목록</h1>
-        <a href="write.jsp" class="btn btn-primary">학생 정보 추가</a>
+        <h1 class="h3">학생 정보</h1>
+        <a href = "write.jsp" class="btn btn-primary">학생 정보 추가</a>
+        <a href = fileform.jsp class="btn btn-primary">fileUpload</a>
     </div>
     <%
         studentDAO studentDAO = new studentDAO();
@@ -36,29 +37,33 @@
             <th>Major</th>
             <th>Rc</th>
             <th>Hometown</th>
-            <th>Function</th>
+            <th>idcard_photo</th> <%-- [추가] 새 헤더 --%>
+            <th>View</th> <%-- [수정] Function 컬럼을 View, Edit, Delete로 분할 --%>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
-            <c:forEach items="${list}" var="u">
-                <tr>
-                    <td>${u.getId()}</td>  <!-- studentVO의 id 출력 -->
-                    <td>${u.getName()}</td>
-                    <td>${u.getAge()}</td>
-                    <td>${u.getMajor()}</td>
-                    <td>${u.getRc()}</td>
-                    <td>${u.getHometown()}</td>
+        <c:forEach items="${list}" var="u">
+            <tr>
+                <td>${u.getId()}</td>
+                <td>${u.getName()}</td>
+                <td>${u.getAge()}</td>
+                <td>${u.getMajor()}</td>
+                <td>${u.getRc()}</td>
+                <td>${u.getHometown()}</td>
 
-                    <td><a href="view.jsp?id=${u.getId()}">View</a></td>
+                    <%-- [추가] 학생증 파일 관리--%>
+                <td><a href="fileform.jsp?id=${u.getId()}">파일 관리</a></td>
 
-                    <td><a href="edit.jsp?id=${u.getId()}">Edit</a></td>
 
+                <td><a href="view.jsp?id=${u.getId()}">View</a></td>
+                <td><a href="edit.jsp?id=${u.getId()}">Edit</a></td>
+                <td><a href="delete_ok.jsp?id=${u.getId()}"
+                       onclick="return confirm('정말로 ID ${u.getId()} 학생 정보를 삭제하시겠습니까?');">Delete</a></td>
+            </tr>
 
-                    <td><a href="delete_ok.jsp?id=${u.getId()}"
-                           onclick="return confirm('정말로 ID ${u.getId()} 학생 정보를 삭제하시겠습니까?');">Delete</a></td>
-                </tr>
-
-            </c:forEach>
+        </c:forEach>
         </tbody>
     </table>
     <br/>

@@ -11,15 +11,18 @@ public class studentVO {
     private String major;
     private String rc;
     private String hometown;
+    // [추가] 학생증 파일 이름 필드
+    private String idcard_filename; //
 
     public studentVO(){}
 
-    public studentVO(String name, int age, String major, String rc, String hometown) {
+    public studentVO(String name, int age, String major, String rc, String hometown, String idcard_filename) {
         this.name = name;
         this.age = age;
         this.major = major;
         this.rc = rc;
         this.hometown = hometown;
+        this.idcard_filename = idcard_filename; // 추가
     }
 
     public int getId() {
@@ -58,4 +61,8 @@ public class studentVO {
     public void setHometown(String hometown) {
         this.hometown = hometown;
     }
+
+    // 학생증 파일이름에 대한 getter setter를 추가
+    public String getIdcard_filename() {return idcard_filename;}
+    public void setIdcard_filename(String idcard_filename) {this.idcard_filename = idcard_filename;}
 }
