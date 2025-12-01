@@ -53,16 +53,9 @@
                 <td>${u.getRc()}</td>
                 <td>${u.getHometown()}</td>
 
-                    <%-- [추가] 학생증 파일 이름 및 링크 표시 --%>
-                <td>
-                    <c:if test="${not empty u.getIdcard_filename()}">
-                        <%-- 업로드 폴더 위치를 'upload'로 가정하고 링크 생성 --%>
-                        <a href="./upload/${u.getIdcard_filename()}" target="_blank">보기</a>
-                    </c:if>
-                    <c:if test="${empty u.getIdcard_filename()}">
-                        -
-                    </c:if>
-                </td>
+                    <%-- [추가] 학생증 파일 관리--%>
+                <td><a href="fileform.jsp?id=${u.getId()}">파일 관리</a></td>
+
 
                 <td><a href="view.jsp?id=${u.getId()}">View</a></td>
                 <td><a href="edit.jsp?id=${u.getId()}">Edit</a></td>
