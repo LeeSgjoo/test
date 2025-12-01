@@ -16,8 +16,9 @@
 <%--<body>--%>
     <jsp:include page="top.jsp"/>
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h3">학생 목록</h1>
-        <a href="write.jsp" class="btn btn-primary">학생 정보 추가</a>
+        <h1 class="h3">학생 정보</h1>
+        <a href = "write.jsp" class="btn btn-primary">학생 정보 추가</a>
+        <a href = fileform.jsp class="btn btn-primary">fileUpload</a>
     </div>
     <%
         studentDAO studentDAO = new studentDAO();
@@ -28,7 +29,6 @@
     %>
 
     <table class="table table-hover table-striped">
-        <a href = fileform.jsp>fileUpload</a>
         <thead class="table-dark">
         <tr>
             <th>ID</th>
