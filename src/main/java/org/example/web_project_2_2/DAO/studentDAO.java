@@ -11,11 +11,13 @@ import java.util.List;
 
 public class studentDAO {
 
-    private final String STUDNET_INSERT = "INSERT INTO student(name, age, major, rc, hometown) VALUES(?, ?, ?, ?, ?)";
-    private final String STUDENT_UPDATE = "UPDATE student SET name=?, age=?, major=?, rc=?, hometown=? WHERE id=?";
+    private final String STUDNET_INSERT = "INSERT INTO student(name, age, major, rc, hometown, idcard_filename) VALUES(?, ?, ?, ?, ?, ?)"; //
+    // [수정] STUDENT_UPDATE: idcard_filename 필드를 추가
+    private final String STUDENT_UPDATE = "UPDATE student SET name=?, age=?, major=?, rc=?, hometown=?, idcard_filename=? WHERE id=?"; //
     private final String STUDENT_DELETE = "DELETE FROM student WHERE id=?";
+    // STUDENT_GET/STUDENT_LIST는 SELECT * FROM student 이므로 쿼리 자체는 수정 불필요
     private final String STUDENT_GET = "SELECT * FROM student WHERE id=?";
-    private final String STUDENT_LIST = "SELECT * FROM student ORDER BY id DESC"; // id 기준 내림차순 정렬
+    private final String STUDENT_LIST = "SELECT * FROM student ORDER BY id DESC";
 
 
     private void closeResources(Connection conn, PreparedStatement stmt, ResultSet rs) {
@@ -40,9 +42,10 @@ public class studentDAO {
             stmt.setString(3, VO.getMajor());
             stmt.setString(4, VO.getRc());
             stmt.setString(5, VO.getHometown());
-            int result = stmt.executeUpdate();
-            return result;
-        } catch (Exception e) {
+            // 6번 파라미터로 idcard_filename 추가
+            stmt.setString(6, VO.getIdcard_filename()); //
+            return stmt.executeUpdate();
+        }catch (Exception e) {
             e.printStackTrace();
         } finally {
             closeResources(conn, stmt, null); // ResultSet이 없으므로 null 전달
@@ -57,14 +60,16 @@ public class studentDAO {
         try {
             conn = JDBCUtil.getConnection();
             stmt = conn.prepareStatement(STUDENT_UPDATE);
-            // 1~5번: 새롭게 변경할 필드 값
+            // 1~5번: name, age, major, rc, hometown
             stmt.setString(1, VO.getName());
             stmt.setInt(2, VO.getAge());
             stmt.setString(3, VO.getMajor());
             stmt.setString(4, VO.getRc());
             stmt.setString(5, VO.getHometown());
-            // 6번: WHERE 조건 (어떤 id를 수정할지)
-            stmt.setInt(6, VO.getId());
+            // 6번: idcard_filename 추가
+            stmt.setString(6, VO.getIdcard_filename()); //
+            // 7번: WHERE 조건 (id)
+            stmt.setInt(7, VO.getId()); //
             int result = stmt.executeUpdate();
             return result;
         } catch (Exception e) {
@@ -114,6 +119,8 @@ public class studentDAO {
                 student.setMajor(rs.getString("major"));
                 student.setRc(rs.getString("rc"));
                 student.setHometown(rs.getString("hometown"));
+                // [추가] idcard_filename 필드 설정
+                student.setIdcard_filename(rs.getString("idcard_filename")); //
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,6 +150,8 @@ public class studentDAO {
                 student.setMajor(rs.getString("major"));
                 student.setRc(rs.getString("rc"));
                 student.setHometown(rs.getString("hometown"));
+                // [추가] idcard_filename 필드 설정
+                student.setIdcard_filename(rs.getString("idcard_filename"));
                 studentList.add(student);
             }
         } catch (Exception e) {

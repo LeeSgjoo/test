@@ -37,29 +37,40 @@
             <th>Major</th>
             <th>Rc</th>
             <th>Hometown</th>
-            <th>Function</th>
+            <th>idcard_photo</th> <%-- [추가] 새 헤더 --%>
+            <th>View</th> <%-- [수정] Function 컬럼을 View, Edit, Delete로 분할 --%>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
-            <c:forEach items="${list}" var="u">
-                <tr>
-                    <td>${u.getId()}</td>  <!-- studentVO의 id 출력 -->
-                    <td>${u.getName()}</td>
-                    <td>${u.getAge()}</td>
-                    <td>${u.getMajor()}</td>
-                    <td>${u.getRc()}</td>
-                    <td>${u.getHometown()}</td>
+        <c:forEach items="${list}" var="u">
+            <tr>
+                <td>${u.getId()}</td>
+                <td>${u.getName()}</td>
+                <td>${u.getAge()}</td>
+                <td>${u.getMajor()}</td>
+                <td>${u.getRc()}</td>
+                <td>${u.getHometown()}</td>
 
-                    <td><a href="view.jsp?id=${u.getId()}">View</a></td>
+                    <%-- [추가] 학생증 파일 이름 및 링크 표시 --%>
+                <td>
+                    <c:if test="${not empty u.getIdcard_filename()}">
+                        <%-- 업로드 폴더 위치를 'upload'로 가정하고 링크 생성 --%>
+                        <a href="./upload/${u.getIdcard_filename()}" target="_blank">보기</a>
+                    </c:if>
+                    <c:if test="${empty u.getIdcard_filename()}">
+                        -
+                    </c:if>
+                </td>
 
-                    <td><a href="edit.jsp?id=${u.getId()}">Edit</a></td>
+                <td><a href="view.jsp?id=${u.getId()}">View</a></td>
+                <td><a href="edit.jsp?id=${u.getId()}">Edit</a></td>
+                <td><a href="delete_ok.jsp?id=${u.getId()}"
+                       onclick="return confirm('정말로 ID ${u.getId()} 학생 정보를 삭제하시겠습니까?');">Delete</a></td>
+            </tr>
 
-
-                    <td><a href="delete_ok.jsp?id=${u.getId()}"
-                           onclick="return confirm('정말로 ID ${u.getId()} 학생 정보를 삭제하시겠습니까?');">Delete</a></td>
-                </tr>
-
-            </c:forEach>
+        </c:forEach>
         </tbody>
     </table>
     <br/>
