@@ -20,20 +20,23 @@
                 existingFilename = student.getIdcard_filename() != null ? student.getIdcard_filename() : "";
             }
         } catch (Exception e) {
-            // 예외 처리
+            // 예외 처리 (ID 파싱 오류 등)
         }
     }
 %>
 
+<html>
+<head>
+    <title>학생증 파일 관리</title>
+</head>
+<body>
+
 <h1>학생증 파일 등록/수정</h1>
 
+<%-- [수정] 학생 정보가 있을 때만 아래의 폼을 표시합니다. --%>
 <% if (student != null) { %>
+
 <h2>[<%= student.getName() %>] 학생 파일 정보</h2>
-<% } else { %>
-<p>오류: 학생 ID를 찾을 수 없습니다.</p>
-<a href="list.jsp">목록으로 돌아가기</a>
-<% return; %>
-<% } %>
 
 <form action = "fileform2_ok.jsp" method = "post" enctype ="multipart/form-data">
     <input type="hidden" name="id" value="<%= student.getId() %>"/>
@@ -56,3 +59,12 @@
     <input type = "submit" value = "파일 업로드 및 저장"/>
     <a href="list.jsp">취소</a>
 </form>
+
+<% } else { %>
+<%-- [수정] 학생 정보 조회 실패 시, return; 없이 오류 메시지만 표시 --%>
+<p>오류: 해당 학생 ID를 찾을 수 없거나 ID가 유효하지 않습니다.</p>
+<a href="list.jsp">목록으로 돌아가기</a>
+<% } %>
+
+</body>
+</html>
