@@ -1,14 +1,16 @@
 package org.example.web_project_2_2;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import org.example.web_project_2_2.bean.fileVO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 
-public class FileUpload {
+public class fileupload {
 
 // 이 메서드는 파일 업로드를 처리하고, 저장된 파일의 정보(제목과 파일명)를 FileVO 객체로 반환합니다.
-public FileVO uploadFile(HttpServletRequest request) { // 메소드 이름은 uploadFile로 추정하여 변경
+public fileVO uploadFile(HttpServletRequest request) { // 메소드 이름은 uploadFile로 추정하여 변경
 
 int sizeLimit = 15 * 1024 * 1024; // 15MB로 크기 제한 (15 * 1024 KB * 1024 B)
 
@@ -43,6 +45,6 @@ e.printStackTrace();
 }
 
 // 업로드된 파일의 정보와 제목을 담은 FileVO 객체를 반환합니다.
-return new FileVO(title, filename);
+return new fileVO(title, filename);
 }
 }
