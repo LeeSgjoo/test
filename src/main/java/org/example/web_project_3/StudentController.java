@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/list")
+@RequestMapping(value="/")
 public class StudentController {
 
     // DAO 대신 Service 객체를 주입받습니다.
