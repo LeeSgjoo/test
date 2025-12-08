@@ -8,7 +8,7 @@ public class studentVO {
     private String rc;
     private String hometown;
     // [추가] 학생증 파일 이름 필드
-    private String idcard_filename; //
+    private String idcard_filename = "Do Not Existed";
 
     public studentVO(){}
 
