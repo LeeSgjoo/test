@@ -22,9 +22,9 @@
 <body>
 
 <header class="app-header mb-4">
-    <div class="container
+    <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand text-primary fw-bold fs-4" href="/list">
+            <a class="navbar-brand text-primary fw-bold fs-4" href="./list">
                 <i class="bi bi-person-lines-fill"></i> 학생 정보 관리 시스템
             </a>
 
@@ -34,10 +34,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/list">목록 보기</a>
+                        <a class="nav-link" href="./list">목록 보기</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/write">정보 추가</a>
+                        <a class="nav-link" href="./add">정보 추가</a>
                     </li>
                 </ul>
             </div>
