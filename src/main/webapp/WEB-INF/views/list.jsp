@@ -14,9 +14,8 @@
     </tr>
     <c:forEach items="${studentList}" var="student">
         <tr>
-            <td>${student.sid}</td>
+            <td>${student.id}</td>
             <td>${student.name}</td>
-            <td>${student.email}</td>
             <td>${student.major}</td>
         </tr>
     </c:forEach>

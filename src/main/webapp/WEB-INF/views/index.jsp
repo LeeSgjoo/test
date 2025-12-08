@@ -8,7 +8,7 @@
             <title>index.jsp</title>
         </header>
         <body>
-            <jsp:forward page="list.jsp" />
+            <a href="./list">list로 이동</a>
         </body>
         <script>
 

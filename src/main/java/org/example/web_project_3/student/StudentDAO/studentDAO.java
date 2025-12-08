@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository // Spring Bean으로 등록하며 데이터 접근 계층임을 명시
@@ -91,13 +92,13 @@ public class studentDAO {
 
 
     //------------------------------------------------------------
-    /** temlate.query() 파트 **/
+    /** template.query() 파트 **/
     // 학생 목록 조회 (READ LIST)
     public List<studentVO> getStudentList() {
         // JdbcTemplate.query() 메서드는 SELECT 쿼리를 실행하고,
         // 결과를 StudentRowMapper를 통해 List<studentVO>로 변환하여 반환합니다.
         return template.query(STUDENT_LIST, new RowMapper<studentVO>(){
-            /** RowMapper 클래스의 mapRow() 메서드를 구현함 **/
+            /** RowMapper 클래스의 mapRow() 메서드를 구현함**/
             @Override
             public studentVO mapRow(ResultSet rs, int rowNum) throws SQLException {
                 studentVO student = new studentVO();
@@ -120,5 +121,63 @@ public class studentDAO {
         // ID를 매개변수로 전달합니다.
         return template.queryForObject(STUDENT_GET,
                 new Object[]{id}, new BeanPropertyRowMapper<studentVO>(studentVO.class));
+    }
+    /*
+    public static void main(String[] args) {
+        System.out.println("hi");
+        studentDAO dao = new studentDAO();
+        System.out.println("hii");
+        List<studentVO> slist = dao.getStudentList();
+        System.out.println("hiii");
+        if (slist != null) {
+            System.out.println(slist.size() + " students found");
+            return;
+        }
+        else {
+            for (studentVO student : slist) {
+                System.out.println(student.getName());
+            }
+        }
+    }
+     */
+    public static void main(String[] args) {
+        System.out.println("hi");
+
+        // 1. Spring Context 로드를 위한 설정 파일 경로 (프로젝트 구조에 맞게 조정 필요)
+        String[] configLocations = new String[] {
+                "classpath:applicationContext.xml", // DB 설정 파일
+                "classpath:dispatcher-servlet.xml"  // 컴포넌트 스캔을 포함하는 파일
+        };
+
+        try (org.springframework.context.support.ClassPathXmlApplicationContext context =
+                     new org.springframework.context.support.ClassPathXmlApplicationContext(configLocations)) {
+
+            // 2. Spring 컨테이너에서 studentDAO 빈을 가져와야 합니다.
+            studentDAO dao = context.getBean(studentDAO.class);
+
+            System.out.println("hii (Spring DI 성공)");
+
+            // 3. DAO 메서드 호출
+            List<studentVO> slist = dao.getStudentList();
+
+            System.out.println("hiii (DAO 호출 성공)");
+
+            if (slist != null) {
+                System.out.println(slist.size() + " students found");
+
+                // slist가 null이 아닐 때만 반복문을 실행해야 합니다.
+                // 원래 코드의 if/else 로직이 잘못되었으므로 수정합니다.
+                for (studentVO student : slist) {
+                    // studentVO에 getName() 메서드가 있다고 가정
+                    System.out.println("Found: " + student.getName());
+                }
+            } else {
+                System.out.println("Error: studentList is null.");
+            }
+
+        } catch (Exception e) {
+            System.err.println("--- Spring Context 로드 또는 DB 연결 오류 발생 ---");
+            e.printStackTrace();
+        }
     }
 }
