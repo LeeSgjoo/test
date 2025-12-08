@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/")
+@RequestMapping("/")
 public class StudentController {
 
     // DAO 대신 Service 객체를 주입받습니다.
@@ -17,7 +17,7 @@ public class StudentController {
     studentService studentService;
 
     // 1. 학생 목록 조회 (GET /student/list)
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String studentList(Model model) {
         // Service를 호출하여 데이터 가져오기
         model.addAttribute("studentList", studentService.getStudentList());
@@ -38,4 +38,5 @@ public class StudentController {
 
         return "redirect:list"; // 목록 페이지로 리다이렉트
     }
+
 }

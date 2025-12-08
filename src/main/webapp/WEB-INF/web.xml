@@ -5,7 +5,10 @@
          version="4.0">
     <display-name>Archetype Created Web Application</display-name>
 
-    <!-- 1. 인코딩 필터 설정 (여기 추가하면 됨) -->
+    <!--
+    1. 인코딩 필터 설정 (여기 추가하면 됨)
+    JSP와 bean 사이 데이터 전송에서 한글 처리 문제발생 시,  encoding 설정을 넣어주어야 함
+    -->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
