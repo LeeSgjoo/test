@@ -33,14 +33,18 @@ public class StudentController {
     // 2. 학생 추가 페이지 이동 (GET /student/add)
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addStudent() {
-        return "write"; // write.jsp로 이동
+        return "add"; // write.jsp로 이동
     }
 
     // 3. 학생 추가 처리 (POST /student/addok)
     @RequestMapping(value = "/addok", method = RequestMethod.POST)
     public String addStudentOK(studentVO vo) {
         // Service를 호출하여 DB에 저장
-        studentDAO.insertStudent(vo);
+        int i = studentDAO.insertStudent(vo);
+        if (i == 0) {
+            System.out.println("데이터 추가 실패");
+        }
+        else System.out.println("데이터 추가 성공");
 
         return "redirect:list"; // 목록 페이지로 리다이렉트
     }

@@ -4,8 +4,7 @@
 
 <jsp:include page="top.jsp"/>
 
-<h1>학생 목록</h1>
-<table border="1" width="80%">
+<table class="table">
     <!--
     private int id;
     private String name;
