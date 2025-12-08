@@ -1,5 +1,6 @@
 package org.example.web_project_3;
 
+import org.example.web_project_3.student.StudentDAO.studentDAO;
 import org.example.web_project_3.student.StudentDAO.studentService;
 import org.example.web_project_3.student.StudentDAO.studentVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class StudentController {
 
-    // DAO 대신 Service 객체를 주입받습니다.
     @Autowired
-    studentService studentService;
+    studentDAO studentDAO;
+
+    // 0. index.jsp 페이지로 이동
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index() {
+        return "index"; // indext.jsp로 이동
+    }
 
     // 1. 학생 목록 조회 (GET /student/list)
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String studentList(Model model) {
-        // Service를 호출하여 데이터 가져오기
-        model.addAttribute("studentList", studentService.getStudentList());
+        // DAO를 호출하여 데이터 가져오기
+        model.addAttribute("studentList", studentDAO.getStudentList());
         return "list"; // list.jsp로 이동
     }
 
@@ -34,9 +40,10 @@ public class StudentController {
     @RequestMapping(value = "/addok", method = RequestMethod.POST)
     public String addStudentOK(studentVO vo) {
         // Service를 호출하여 DB에 저장
-        studentService.insertStudent(vo);
+        studentDAO.insertStudent(vo);
 
         return "redirect:list"; // 목록 페이지로 리다이렉트
     }
+
 
 }
