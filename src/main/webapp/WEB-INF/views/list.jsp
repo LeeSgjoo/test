@@ -6,17 +6,34 @@
 
 <h1>학생 목록</h1>
 <table border="1" width="80%">
+    <!--
+    private int id;
+    private String name;
+    private int age;
+    private String major;
+    private String rc;
+    private String hometown;
+    private String idcard_filename;
+    -->
     <tr>
-        <th>학번 (sid)</th>
-        <th>이름 (name)</th>
-        <th>이메일 (email)</th>
-        <th>전공 (major)</th>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+        <th>major</th>
+        <th>rc</th>
+        <th>hometown</th>
+        <th>filename</th>
+
     </tr>
     <c:forEach items="${studentList}" var="student">
         <tr>
             <td>${student.id}</td>
             <td>${student.name}</td>
+            <td>${student.age}</td>
             <td>${student.major}</td>
+            <td>${student.rc}</td>
+            <td>${student.hometown}</td>
+            <td>${student.idcard_filename}</td>
         </tr>
     </c:forEach>
 </table>
